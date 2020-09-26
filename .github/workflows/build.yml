@@ -1,0 +1,25 @@
+name: Build
+
+on: push
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  Build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          sudo ./build.sh
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        with:
+          files: ramdisk/chroot.tar.xz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
