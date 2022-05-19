@@ -14,8 +14,8 @@ curl -L https://apt.kitware.com/keys/kitware-archive-latest.asc | chroot chroot 
 chroot chroot apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
 chroot chroot add-apt-repository -y ppa:ubuntu-toolchain-r/test
 chroot chroot apt-get update
-chroot chroot apt-get install --no-install-recommends -y gcc-10 g++-10 cmake
-chroot chroot update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+chroot chroot apt-get install --no-install-recommends -y gcc-11 g++-11 cmake
+chroot chroot update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
 
 ../unmount_chroot.sh
 tar cJf chroot.tar.xz chroot
